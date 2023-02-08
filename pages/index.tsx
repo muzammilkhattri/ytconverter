@@ -32,7 +32,7 @@ export default function IndexPage() {
         body: JSON.stringify({ url, type: "mp3" }),
       }
       setLoading(true)
-      fetch(`http://localhost:3000/api/yt`, requestOptions)
+      fetch(`/api/yt`, requestOptions)
         .then((res) => res.blob())
         .then((blob) => {
           const sizeInBytes = blob.size
@@ -59,7 +59,7 @@ export default function IndexPage() {
       }
       setLoading(true)
 
-      fetch(`http://localhost:3000/api/yt`, requestOptions)
+      fetch(`/api/yt`, requestOptions)
         .then((res) => res.blob())
         .then((blob) => {
           const sizeInBytes = blob.size
