@@ -23,7 +23,7 @@ export const siteConfig: SiteConfig = {
   ],
   links: {
     twitter: "https://twitter.com/muzammilmac",
-    github: "https://github.com/shadcn/ui",
+    github: "https://github.com/muzammilkhattri/ytconverter",
     docs: "https://ui.shadcn.com",
   },
 }
