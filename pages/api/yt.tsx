@@ -2,7 +2,6 @@ export const config = {
   api: {
     responseLimit: false,
   },
-  runtime:"edge"
 };
 const ytdl = require("ytdl-core");
 
