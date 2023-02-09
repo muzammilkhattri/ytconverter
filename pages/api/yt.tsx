@@ -5,25 +5,31 @@ export const config = {
 };
 const ytdl = require("ytdl-core");
 
-export default async function handler(req, res) {
-  if (req.method === "POST") {
+
+import { NextApiRequest, NextApiResponse } from 'next';
+
+export default function yt(
+  request: NextApiRequest,
+  response: NextApiResponse,
+) {
+  if (request.method === "POST") {
     try {
-      const url = req.body.url;
-      const type = req.body.type;
+      const url = request.body.url;
+      const type = request.body.type;
       if (type === "mp3") {
-        res.setHeader("content-type", "audio/mpeg");
-        await ytdl(url, {
+        response.setHeader("content-type", "audio/mpeg");
+        ytdl(url, {
           format: "mp3",
           filter: "audioonly",
-        }).pipe(res);
+        }).pipe(response);
       } else if (type === "mp4") {
-        res.setHeader("content-type", "video/mp4");
-        await ytdl(url).pipe(res);
+        response.setHeader("content-type", "video/mp4");
+        ytdl(url).pipe(response);
       }
     } catch (err) {
       console.log("err: ", err);
     }
   } else {
-    res.status(400).json({ result: false });
+    response.status(400).json({ result: false });
   }
 }
